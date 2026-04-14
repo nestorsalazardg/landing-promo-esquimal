@@ -1067,6 +1067,16 @@ ul {
     line-height: 1.5;
 }
 
+.form-group input[name="website"] {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .spinner {
     animation: spin 1s linear infinite;
 }

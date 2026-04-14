@@ -100,11 +100,37 @@ function initScrollAnimations() {
     });
 }
 
+function sanitizeInput(input) {
+    if (typeof input !== 'string') return '';
+    
+    const sanitized = input
+        .replace(/[\x00-\x1F\x7F]/g, '')
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/javascript:/gi, '')
+        .replace(/on\w+\s*=/gi, '')
+        .replace(/data:/gi, '')
+        .trim();
+    
+    return sanitized;
+}
+
+function sanitizeHTML(str) {
+    if (typeof str !== 'string') return '';
+    
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 function initFormValidation() {
     const form = document.getElementById('leadForm');
-    const inputs = form.querySelectorAll('input, select');
+    if (!form) return;
+    
+    const inputs = form.querySelectorAll('input:not([type="hidden"]), select');
     
     inputs.forEach(input => {
+        if (input.id === 'website') return;
+        
         input.addEventListener('blur', function() {
             validateField(this);
         });
@@ -123,20 +149,31 @@ function validateField(field) {
     let isValid = true;
     let errorMessage = '';
     
+    if (field.id === 'website') return true;
+    
     if (field.required && !value) {
         isValid = false;
         errorMessage = 'Este campo es obligatorio';
     } else if (field.type === 'email' && value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
         if (!emailRegex.test(value)) {
             isValid = false;
             errorMessage = 'Ingresa un correo electrónico válido';
         }
     } else if (field.id === 'telefono' && value) {
-        const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+        const phoneRegex = /^[0-9\s\-\+\(\)]{10,20}$/;
         if (!phoneRegex.test(value)) {
             isValid = false;
             errorMessage = 'Ingresa un número de teléfono válido';
+        }
+    } else if (field.id === 'nombre' && value) {
+        if (value.length < 2 || value.length > 100) {
+            isValid = false;
+            errorMessage = 'El nombre debe tener entre 2 y 100 caracteres';
+        }
+        if (/[<>\"\'\\]/.test(value)) {
+            isValid = false;
+            errorMessage = 'El nombre contiene caracteres no permitidos';
         }
     }
     
@@ -155,6 +192,14 @@ function validateField(field) {
 
 function validateForm() {
     const form = document.getElementById('leadForm');
+    if (!form) return false;
+    
+    const honeypot = form.querySelector('input[name="website"]');
+    if (honeypot && honeypot.value !== '') {
+        console.log('Bot detectado: honeypot activado');
+        return false;
+    }
+    
     const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
     
@@ -169,6 +214,8 @@ function validateForm() {
 
 function initLeadForm() {
     const form = document.getElementById('leadForm');
+    if (!form) return;
+    
     const submitBtn = document.getElementById('submitBtn');
     const formSuccess = document.getElementById('formSuccess');
     
@@ -180,15 +227,18 @@ function initLeadForm() {
         }
         
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+        const data = {};
+        
+        for (let [key, value] of formData.entries()) {
+            if (key === 'website') continue;
+            data[key] = sanitizeInput(value);
+        }
         
         submitBtn.disabled = true;
         submitBtn.querySelector('.btn-text').style.display = 'none';
         submitBtn.querySelector('.btn-loading').style.display = 'flex';
         
         setTimeout(() => {
-            console.log('Lead capturado:', data);
-            
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'Lead', {
                     content_name: 'Registro de descuento Esquimal',
