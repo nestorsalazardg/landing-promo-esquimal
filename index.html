@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Esquimal - Nueva línea de artículos y accesorios premium para mascotas. Descubre productos de calidad para consentir a tu mejor amigo.">
+    <meta name="keywords" content="mascotas, accesorios para mascotas, productos para perros, productos para gatos, Esquimal">
+    <meta name="author" content="Esquimal">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Esquimal - Artículos Premium para Mascotas">
+    <meta property="og:description" content="Descubre la nueva línea de accesorios premium para tu mascota. Calidad y estilo para consentir a tu mejor amigo.">
+    <meta property="og:type" content="website">
+    
+    <title>Esquimal | Artículos Premium para Mascotas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!--
+    ============================================
+    ETIQUETAS DE SEGUIMIENTO - INSERTAR AQUÍ
+    ============================================
+    
+    EJEMPLO - Meta Pixel Code:
+    <!-- Meta Pixel Code --
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'TU_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code --
+    
+    EJEMPLO - Google Analytics 4:
+    <!-- Google tag (gtag.js) --
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <!-- End Google tag --
+    
+    EJEMPLO - TikTok Pixel:
+    <!-- TikTok Pixel --
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){var e=ttq._i[t]||{};return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=void 0,ttq.async=!0;var o=t.createElement("script");o.type="text/javascript",o.src=i+"?sdkid="+e+"&lib="+n;var a=t.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+      ttq.load('TU_TIKTOK_ID', 'ta');
+      ttq.track('page');
+    }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel --
+    
+    ============================================
+    -->
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <span class="logo-icon">❄</span>
+                <span class="logo-text">Esquimal</span>
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+                    <li><a href="#productos" class="nav-link">Productos</a></li>
+                    <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+                    <li><a href="#contacto" class="nav-link nav-cta">Quiero mi Descuento</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">✨ Nueva Colección 2026</span>
+                <h1 class="hero-title">Mima a tu mascota con los <span class="highlight">mejores accesorios</span></h1>
+                <p class="hero-subtitle">Descubre nuestra nueva línea premium de artículos para mascotas. Calidad, estilo y comodidad para tu mejor amigo de cuatro patas.</p>
+                <div class="hero-cta-group">
+                    <a href="#contacto" class="btn btn-primary btn-lg">
+                        <span>Obtener 20% de Descuento</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#productos" class="btn btn-secondary btn-lg">Ver Productos</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Clientes felices</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Productos premium</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Calificación</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-wrapper">
+                    <div class="hero-img-placeholder">
+                        <span class="paw-icon">🐾</span>
+                    </div>
+                    <div class="floating-badge">
+                        <span class="badge-text">Envío Gratis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Beneficios Section -->
+    <section class="beneficios" id="beneficios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">¿Por qué elegirnos?</span>
+                <h2 class="section-title">Beneficios que tu mascota merece</h2>
+                <p class="section-subtitle">Cada producto está diseñado pensando en el bienestar y felicidad de tu compañero</p>
+            </div>
+            <div class="beneficios-grid">
+                <div class="beneficio-card" data-animate>
+                    <div class="beneficio-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="beneficio-title">Materiales Premium</h3>
+                    <p class="beneficio-text">Fabricado con materiales de alta calidad, seguros y duraderos para el uso diario de tu mascota.</p>
+                </div>
+                <div class="beneficio-card" data-animate>
+                    <div class="beneficio-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="beneficio-title">Diseño Ergonómico</h3>
+                    <p class="beneficio-text">Diseños pensados para la comodidad y movilidad de tu mascota, sin irritaciones ni incomodidades.</p>
+                </div>
+                <div class="beneficio-card" data-animate>
+                    <div class="beneficio-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3 class="beneficio-title">Fácil de Limpiar</h3>
+                    <p class="beneficio-text">Materiales lavables y resistentes que facilitan el mantenimiento y mantienen la higiene.</p>
+                </div>
+                <div class="beneficio-card" data-animate>
+                    <div class="beneficio-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <path d="M16 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="beneficio-title">Envío Express</h3>
+                    <p class="beneficio-text">Recibe tu pedido en 24-48 horas con envío gratuito en pedidos mayores a $500 MXN.</p>
+                </div>
+                <div class="beneficio-card" data-animate>
+                    <div class="beneficio-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                        </svg>
+                    </div>
+                    <h3 class="beneficio-title">Garantía Total</h3>
+                    <p class="beneficio-text">30 días de garantía de satisfacción. Si no te encanta, te devolvemos tu dinero.</p>
+                </div>
+                <div class="beneficio-card" data-animate>
+                    <div class="beneficio-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="beneficio-title">Soporte 24/7</h3>
+                    <p class="beneficio-text">Equipo de atención al cliente disponible las 24 horas para resolver cualquier duda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section class="productos" id="productos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Productos</span>
+                <h2 class="section-title">Lo más vendido de la temporada</h2>
+                <p class="section-subtitle">Descubre los accesorios favoritos de miles de mascotas felices</p>
+            </div>
+            <div class="productos-grid">
+                <div class="producto-card" data-animate>
+                    <div class="producto-badge">Más Vendido</div>
+                    <div class="producto-image">
+                        <span class="producto-icon">🦴</span>
+                    </div>
+                    <div class="producto-content">
+                        <span class="producto-categoria">Alimentación</span>
+                        <h3 class="producto-title">Plato Anti-Hunger Premium</h3>
+                        <p class="producto-desc">Reduce hasta 80% la velocidad de alimentación. Ideal para perros glotones.</p>
+                        <div class="producto-footer">
+                            <span class="producto-precio">
+                                <span class="precio-old">$599 MXN</span>
+                                <span class="precio-new">$479 MXN</span>
+                            </span>
+                            <a href="#contacto" class="btn btn-sm">Lo Quiero</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="producto-card" data-animate>
+                    <div class="producto-badge producto-badge-new">Nuevo</div>
+                    <div class="producto-image">
+                        <span class="producto-icon">🛏️</span>
+                    </div>
+                    <div class="producto-content">
+                        <span class="producto-categoria">Descanso</span>
+                        <h3 class="producto-title">Cama Ortopédica Nube</h3>
+                        <p class="producto-desc">Espuma de memoria premium que alivia presiones articulares.</p>
+                        <div class="producto-footer">
+                            <span class="producto-precio">
+                                <span class="precio-old">$1,299 MXN</span>
+                                <span class="precio-new">$1,039 MXN</span>
+                            </span>
+                            <a href="#contacto" class="btn btn-sm">Lo Quiero</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="producto-card" data-animate>
+                    <div class="producto-badge">-25%</div>
+                    <div class="producto-image">
+                        <span class="producto-icon">🎀</span>
+                    </div>
+                    <div class="producto-content">
+                        <span class="producto-categoria">Moda</span>
+                        <h3 class="producto-title">Abrigo Térmico Polar</h3>
+                        <p class="producto-desc">Tejido térmico impermeable. Mantiene a tu mascota cálida y estilosa.</p>
+                        <div class="producto-footer">
+                            <span class="producto-precio">
+                                <span class="precio-old">$799 MXN</span>
+                                <span class="precio-new">$599 MXN</span>
+                            </span>
+                            <a href="#contacto" class="btn btn-sm">Lo Quiero</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="producto-card" data-animate>
+                    <div class="producto-badge producto-badge-hot">Hot</div>
+                    <div class="producto-image">
+                        <span class="producto-icon">🦮</span>
+                    </div>
+                    <div class="producto-content">
+                        <span class="producto-categoria">Paseo</span>
+                        <h3 class="producto-title">Collar GPS Tracker</h3>
+                        <p class="producto-desc">Rastrea a tu mascota en tiempo real. Batería de 7 días.</p>
+                        <div class="producto-footer">
+                            <span class="producto-precio">
+                                <span class="precio-old">$1,899 MXN</span>
+                                <span class="precio-new">$1,519 MXN</span>
+                            </span>
+                            <a href="#contacto" class="btn btn-sm">Lo Quiero</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section class="testimonios" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">Miles de familias confían en Esquimal para consentir a sus mascotas</p>
+            </div>
+            <div class="testimonios-grid">
+                <div class="testimonio-card" data-animate>
+                    <div class="testimonio-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-text">"Mi golden retriever ama su nueva cama ortopédica. Ha mejorado mucho su descanso. La calidad es increíble y el envío fue súper rápido."</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <span class="author-name">María del Carmen</span>
+                            <span class="author-pet">Madre de Luna 🐕</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card" data-animate>
+                    <div class="testimonio-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-text">"El plato anti-hunger fue la mejor compra. Max ya no se atraganta y digiere mucho mejor. Definitivamente recomiendo Esquimal."</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">RG</div>
+                        <div class="author-info">
+                            <span class="author-name">Roberto García</span>
+                            <span class="author-pet">Padre de Max 🐶</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card" data-animate>
+                    <div class="testimonio-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonio-text">"El collar GPS me dio tranquilidad total. Ahora puedo dejar a Michi libre en el jardín sin preocuparme. Excelente producto."</p>
+                    <div class="testimonio-author">
+                        <div class="author-avatar">AL</div>
+                        <div class="author-info">
+                            <span class="author-name">Ana López</span>
+                            <span class="author-pet">Madre de Michi 🐱</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <span class="cta-icon">🎁</span>
+                <h2 class="cta-title">¿Listo para consentir a tu mascota?</h2>
+                <p class="cta-text">Regístrate ahora y obtén un 20% de descuento en tu primera compra + envío gratis. Oferta limitada.</p>
+                <a href="#contacto" class="btn btn-primary btn-xl">
+                    <span>Quiero mi Descuento Ahora</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <p class="cta-note">* Solo los primeros 100 registros reciben el descuento</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Contacto / Lead Capture -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="contacto-wrapper">
+                <div class="contacto-info">
+                    <span class="section-tag">Registro Exclusivo</span>
+                    <h2 class="section-title">Obtén tu 20% de descuento</h2>
+                    <p class="contacto-text">Completa el formulario y recibirás un código de descuento exclusivo directamente en tu correo. No te lo pierdas.</p>
+                    <ul class="contacto-benefits">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            20% de descuento en tu primera compra
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Envío gratis en tu primer pedido
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Acceso anticipado a ofertas y nuevos productos
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Consejos y guías de cuidado para mascotas
+                        </li>
+                    </ul>
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <span class="trust-icon">🔒</span>
+                            <span>Datos Seguros</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="trust-icon">📧</span>
+                            <span>Sin Spam</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="trust-icon">🚫</span>
+                            <span>Sin Compromiso</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contacto-form-wrapper">
+                    <form class="contacto-form" id="leadForm" novalidate>
+                        <h3 class="form-title">Registro de Descuento</h3>
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                            <span class="form-error" id="nombreError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="Ej: juan@email.com" required>
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono (opcional)</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ej: 55 1234 5678">
+                        </div>
+                        <div class="form-group">
+                            <label for="mascota">¿Qué mascota tienes?</label>
+                            <select id="mascota" name="mascota" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="perro">🐕 Perro</option>
+                                <option value="gato">🐱 Gato</option>
+                                <option value="ambos">🐕🐱 Ambos</option>
+                                <option value="otro">🦜 Otra mascota</option>
+                            </select>
+                            <span class="form-error" id="mascotaError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                            <span class="btn-text">Obtener mi Descuento</span>
+                            <span class="btn-loading" style="display: none;">
+                                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.416" stroke-dashoffset="10"/>
+                                </svg>
+                                Enviando...
+                            </span>
+                        </button>
+                        <p class="form-disclaimer">Al registrarte aceptas recibir comunicaciones comerciales de Esquimal. Puedes darte de baja en cualquier momento.</p>
+                    </form>
+                    <div class="form-success" id="formSuccess" style="display: none;">
+                        <div class="success-icon">🎉</div>
+                        <h3>¡Gracias por registrarte!</h3>
+                        <p>Revisa tu correo electrónico. Te hemos enviado tu código de descuento exclusivo.</p>
+                        <p class="success-code">Código: <strong>ESQUIMAL20</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">❄</span>
+                        <span class="logo-text">Esquimal</span>
+                    </a>
+                    <p class="footer-tagline">Calidad premium para tu mejor amigo</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Productos</h4>
+                        <ul>
+                            <li><a href="#">Alimentación</a></li>
+                            <li><a href="#">Camas y Descanso</a></li>
+                            <li><a href="#">Moda</a></li>
+                            <li><a href="#">Paseo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#">Preguntas Frecuentes</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Términos y Condiciones</a></li>
+                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#">Política de Devoluciones</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Esquimal. Todos los derechos reservados.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="TikTok">🎵</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

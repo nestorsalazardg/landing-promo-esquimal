@@ -1,0 +1,228 @@
+document.addEventListener('DOMContentLoaded', function() {
+    initHeader();
+    initMobileMenu();
+    initSmoothScroll();
+    initScrollAnimations();
+    initFormValidation();
+    initLeadForm();
+});
+
+function initHeader() {
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    }, { passive: true });
+}
+
+function initMobileMenu() {
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    const navLinks = nav.querySelectorAll('.nav-link');
+    
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animated');
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+}
+
+function initFormValidation() {
+    const form = document.getElementById('leadForm');
+    const inputs = form.querySelectorAll('input, select');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.parentElement.classList.contains('error')) {
+                validateField(this);
+            }
+        });
+    });
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    const errorElement = document.getElementById(field.id + 'Error');
+    let isValid = true;
+    let errorMessage = '';
+    
+    if (field.required && !value) {
+        isValid = false;
+        errorMessage = 'Este campo es obligatorio';
+    } else if (field.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            isValid = false;
+            errorMessage = 'Ingresa un correo electrónico válido';
+        }
+    } else if (field.id === 'telefono' && value) {
+        const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+        if (!phoneRegex.test(value)) {
+            isValid = false;
+            errorMessage = 'Ingresa un número de teléfono válido';
+        }
+    }
+    
+    if (errorElement) {
+        errorElement.textContent = errorMessage;
+    }
+    
+    if (isValid) {
+        field.parentElement.classList.remove('error');
+    } else {
+        field.parentElement.classList.add('error');
+    }
+    
+    return isValid;
+}
+
+function validateForm() {
+    const form = document.getElementById('leadForm');
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!validateField(field)) {
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+function initLeadForm() {
+    const form = document.getElementById('leadForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!validateForm()) {
+            return;
+        }
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.btn-text').style.display = 'none';
+        submitBtn.querySelector('.btn-loading').style.display = 'flex';
+        
+        setTimeout(() => {
+            console.log('Lead capturado:', data);
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Registro de descuento Esquimal',
+                    content_category: 'Mascotas'
+                });
+            }
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'generate_lead', {
+                    currency: 'MXN',
+                    value: 1
+                });
+            }
+            
+            if (typeof ttq !== 'undefined') {
+                ttq.track('Lead');
+            }
+            
+            form.style.display = 'none';
+            formSuccess.style.display = 'block';
+            
+            submitBtn.disabled = false;
+            submitBtn.querySelector('.btn-text').style.display = 'inline';
+            submitBtn.querySelector('.btn-loading').style.display = 'none';
+            
+        }, 1500);
+    });
+}
+
+document.addEventListener('scroll', function() {
+    const scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    
+    if (typeof gtag !== 'undefined' && scrollPercent > 75) {
+        gtag('event', 'scroll_depth', {
+            percent_scrolled: Math.round(scrollPercent)
+        });
+    }
+}, { passive: true });
