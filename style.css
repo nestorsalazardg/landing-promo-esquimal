@@ -460,6 +460,153 @@ ul {
     100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
+.slider-section {
+    position: relative;
+    background: var(--white);
+}
+
+.slider-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(37, 99, 235, 0.4) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-content {
+    text-align: center;
+    max-width: 700px;
+    padding: 20px;
+}
+
+.slide-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 0.813rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    margin-bottom: 20px;
+}
+
+.slide-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.slide-text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.slider-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    color: var(--dark);
+    cursor: pointer;
+    transition: var(--transition);
+    pointer-events: auto;
+    box-shadow: var(--shadow-md);
+}
+
+.slider-btn:hover {
+    background: var(--white);
+    transform: scale(1.1);
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.slider-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.slider-dot.active {
+    background: var(--white);
+    transform: scale(1.2);
+}
+
 .beneficios {
     padding: 120px 0;
     background: var(--white);
@@ -1046,6 +1193,10 @@ ul {
 }
 
 @media (max-width: 1024px) {
+    .slider {
+        height: 400px;
+    }
+    
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1112,6 +1263,28 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .slider {
+        height: 350px;
+        border-radius: var(--radius-lg);
+    }
+    
+    .slide-title {
+        font-size: 1.25rem;
+    }
+    
+    .slide-text {
+        font-size: 0.938rem;
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .slider-nav {
+        padding: 0 12px;
+    }
+    
     .nav {
         position: fixed;
         top: 72px;
@@ -1221,6 +1394,38 @@ ul {
 }
 
 @media (max-width: 480px) {
+    .slider {
+        height: 280px;
+    }
+    
+    .slide-tag {
+        padding: 6px 14px;
+        font-size: 0.688rem;
+    }
+    
+    .slide-title {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .slide-text {
+        font-size: 0.813rem;
+    }
+    
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .slider-dots {
+        gap: 8px;
+    }
+    
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+    }
+    
     .hero-title {
         font-size: 1.75rem;
     }

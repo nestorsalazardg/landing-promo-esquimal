@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initFormValidation();
     initLeadForm();
+    initImageSlider();
 });
 
 function initHeader() {
@@ -226,3 +227,74 @@ document.addEventListener('scroll', function() {
         });
     }
 }, { passive: true });
+
+function initImageSlider() {
+    const slider = document.getElementById('imageSlider');
+    if (!slider) return;
+    
+    const slides = slider.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('sliderDots');
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    
+    let currentSlide = 0;
+    let slideInterval;
+    const intervalTime = 5000;
+    
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('slider-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Ir a slide ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = dotsContainer.querySelectorAll('.slider-dot');
+    
+    function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        
+        currentSlide = index;
+        
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+    
+    function nextSlide() {
+        goToSlide(currentSlide + 1);
+    }
+    
+    function prevSlide() {
+        goToSlide(currentSlide - 1);
+    }
+    
+    function startAutoPlay() {
+        slideInterval = setInterval(nextSlide, intervalTime);
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(slideInterval);
+    }
+    
+    nextBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        nextSlide();
+        startAutoPlay();
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        prevSlide();
+        startAutoPlay();
+    });
+    
+    slider.addEventListener('mouseenter', stopAutoPlay);
+    slider.addEventListener('mouseleave', startAutoPlay);
+    
+    startAutoPlay();
+}
